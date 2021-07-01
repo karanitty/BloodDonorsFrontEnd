@@ -6,13 +6,19 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    UserLoginComponent,
+    AdminLoginComponent,
+    UserSignupComponent
   ],
   imports: [
     BrowserModule,
