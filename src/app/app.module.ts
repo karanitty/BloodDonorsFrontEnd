@@ -13,6 +13,7 @@ import { AddDonorComponent } from './add-donor/add-donor.component';
 import { EditDonorComponent } from './edit-donor/edit-donor.component';
 import { UserDonorComponent } from './user-donor/user-donor.component';
 import { AdminDonorComponent } from './admin-donor/admin-donor.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminDonorComponent } from './admin-donor/admin-donor.component';
     AddDonorComponent,
     EditDonorComponent,
     UserDonorComponent,
-    AdminDonorComponent
+    AdminDonorComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
