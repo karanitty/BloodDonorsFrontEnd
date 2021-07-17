@@ -9,19 +9,28 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-		      	<form action="#" class="signin-form">
+		      	<form class="signin-form" [formGroup]='admin' (ngSubmit)='adminLogin()'>
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Administrator Code" required>
+		      			<input type="text" class="form-control" placeholder="Administrator Code" formControlName='name' name='name'>
 		      		</div>
+					<span class='text-warning' style="margin-left: 30%;" *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>
+						Code is Required
+					</span>
 	                <div class="form-group">
-	                    <input id="password-field" type="password" class="form-control" placeholder="Administrator Password" required>
+	                    <input id="password-field" type="password" class="form-control" placeholder="Administrator Password" formControlname='password' name='password'>
 	                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
 	                </div>
+					<span class="text-warning" style="margin-left: 30%;" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+						Password is required
+					</span>
                     <span>
                         <!-- Space for writing Error message -->
                     </span>
+					<div class='form-group text-center text-warning' *ngIf="errorMsg">
+						<br>Incorrect Code or Password.
+					</div>
 	                <div class="form-group">
-	            	    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            	    <button type="submit" class="form-control btn btn-primary submit px-3" [disabled]="admin.invalid">Sign In</button>
 	                </div><br>
 	                <!-- <div style="text-align: center;">
                         <a routerLink="/user_signup">Create an Account</a>

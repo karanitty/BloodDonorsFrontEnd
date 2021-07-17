@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor() { }
+  submitted = false;
+  errorMsg:String = '';
+
+  admin = this.fb.group({
+    name:['',[Validators.required]],
+    password:['',[Validators.required]]
+  });
+
+  constructor(private auth:AuthService, private router:Router, private fb:FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  get formControl(){
+    return this.admin.controls;
+  }
+
+  adminLogin(){
+    this.submitted = true;
+    this.errorMsg='';
   }
 
 }
