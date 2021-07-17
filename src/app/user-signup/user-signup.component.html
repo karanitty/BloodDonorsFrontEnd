@@ -9,26 +9,49 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-		      	<form action="#" class="signin-form">
+		      	<form class="signin-form" [formGroup]='newUser' (ngSubmit)='userSignUp()' enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Full Name" required>
-                    </div>  
+                        <input type="text" class="form-control" placeholder="Full Name" formControlName='name' name='name'>
+                    </div>
+					<span class='text-warning' style="margin-left: 30%;" *ngIf='(formControl.name.touched || submitted) && formControl.name.errors?.required'>
+						Name is Required
+					</span>  
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Email ID" required>
+		      			<input type="text" class="form-control" placeholder="Email ID" formControlName='email' name='email'>
 		      		</div>
+					<span class='text-warning' style="margin-left: 30%;" *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+						Email ID is Required
+					</span>
+					<span class='text-warning' style="margin-left: 30%;" *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.email'>
+						Enter a valid Email ID
+					</span>
 	                <div class="form-group">
-	                    <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+	                    <input id="password-field" type="password" class="form-control" placeholder="Password" formControlName='password' name='password'>
 	                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
 	                </div>
-                    <div class="form-group">
-	                    <input id="password-field" type="password" class="form-control" placeholder="Confirm Password" required>
-	                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
-	                </div>
+					<span class="text-warning" style="margin-left: 30%;" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+						Password is required
+					</span>
+					<span class="text-warning" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.pattern'>
+						Password must contain a minimum of 8 characters with atleast 1 uppercase, 1 lowercase, 1 digit and 1 special character
+					</span>
+					<div class="form-group">
+						<input type="phone" class="form-control" placeholder="Phone Number" formControlName='phone' name='phone'>
+					</div>
+					<span class="text-warning" style="margin-left: 25%;" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.required'>
+						Mobile Number is Required
+					</span>
+					<span class="text-warning" style="margin-left: 25%;" *ngIf='(formControl.phone.touched || submitted) && formControl.phone.errors?.pattern'>
+						Valid Mobile Number is Required
+					</span>
                     <span>
                         <!-- Space for writing Error message -->
                     </span>
+					<div class='form-group text-center text-warning' *ngIf="errorMsg">
+						<br>An account with the Email ID is alredy registered. Please Log In or create new account using a new Email ID.
+					</div>
 	                <div class="form-group">
-	            	    <button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
+	            	    <button type="submit" class="form-control btn btn-primary submit px-3" [disabled]="newUser.invalid">Sign Up</button>
 	                </div>
 	                <div style="text-align: center;">
                         <a routerLink="/user_login">Already have an Account?</a>
