@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -14,8 +14,8 @@ export class AdminLoginComponent implements OnInit {
   errorMsg:String = '';
 
   admin = this.fb.group({
-    name:['',[Validators.required]],
-    password:['',[Validators.required]]
+    name:['',Validators.required],
+    password:['',Validators.required]
   });
 
   constructor(private auth:AuthService, private router:Router, private fb:FormBuilder) { }
@@ -30,6 +30,20 @@ export class AdminLoginComponent implements OnInit {
   adminLogin(){
     this.submitted = true;
     this.errorMsg='';
+    console.log(this.admin.value);
+    this.auth.adminLogin(this.admin.value)
+    .subscribe(
+      res=>{
+        localStorage.setItem('user','admin');
+        console.log('Success');
+        this.router.navigate(['/admin_home']);
+      },
+      err=>{
+        console.log(err);
+        this.errorMsg = err;
+      }
+      
+    )
   }
 
 }

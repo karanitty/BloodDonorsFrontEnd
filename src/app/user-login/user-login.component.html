@@ -9,19 +9,28 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-		      	<form action="#" class="signin-form">
+		      	<form class="signin-form" [formGroup]='user' (ngSubmit)='userLogin()' enctype="multipart/form-data">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Email ID" required>
+		      			<input type="email" class="form-control" placeholder="Email ID" formControlName='email' name='email'>
 		      		</div>
+					<span class='text-warning' style="margin-left: 30%;" *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+						Email ID is Required
+					</span>
 	                <div class="form-group">
-	                    <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+	                    <input id="password-field" type="password" class="form-control" placeholder="Password" formControlName='password' name='password'>
 	                    <!-- <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> -->
 	                </div>
-                    <span>
-                        <!-- Space for writing Error message -->
-                    </span>
+					<span class="text-warning" style="margin-left: 30%;" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+						Password is required
+					</span>
+                    <!-- <span>
+                        Space for writing Error message
+                    </span> -->
+					<div class='form-group text-center text-warning' *ngIf="errorMsg">
+						Email ID or Password is incorrect.
+					</div>
 	                <div class="form-group">
-	            	    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            	    <button type="submit" class="form-control btn btn-primary submit px-3" [disabled]="user.invalid">Sign In</button>
 	                </div>
 	                <div style="text-align: center;">
                         <a routerLink="/user_signup">Create an Account</a>

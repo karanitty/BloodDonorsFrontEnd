@@ -10,6 +10,16 @@ export class AuthService {
 
   userSignUp(user:any){
     console.log(user);
-    return this.http.post('http://localhost:3000/user_signup',user);
+    return this.http.post('http://localhost:3000/signup/user',user);
+  }
+
+  adminLogin(user){
+    console.log(user);
+    return this.http.post('http://localhost:3000/login/admin',user);
+  }
+
+  userLogin(user){
+    console.log(user);
+    return this.http.post('http://localhost:3000/login/user',user);
   }
 }

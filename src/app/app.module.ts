@@ -16,6 +16,7 @@ import { UserDonorComponent } from './user-donor/user-donor.component';
 import { AdminDonorComponent } from './admin-donor/admin-donor.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

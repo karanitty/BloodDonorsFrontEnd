@@ -36,6 +36,7 @@ export class UserSignupComponent implements OnInit {
     this.auth.userSignUp(this.newUser.value).subscribe(
       res=>{
         alert('User has been Successfully Registered');
+        console.log('Success');
         this.router.navigate(['/user_login']);
       },
       err =>{
