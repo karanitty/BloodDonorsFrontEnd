@@ -30,4 +30,13 @@ export class AuthService {
   getToken(){
     return localStorage.getItem('token');
   }
+
+  loggedInAdmin(){
+    if(localStorage.getItem('user')=='admin'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

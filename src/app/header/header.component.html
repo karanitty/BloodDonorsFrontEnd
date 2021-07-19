@@ -8,30 +8,30 @@
         <a class="navbar-brand" href="#">Blood Donors List</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/">About</a>
+            <a class="nav-link" aria-current="page" routerLink="/" *ngIf='!auth.loggedIn()'>About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page"  routerLink="/admin_home">Home</a>
+            <a class="nav-link" aria-current="page"  routerLink="/admin_home" *ngIf='auth.loggedIn() && auth.loggedInAdmin()'>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/donors">Donors</a>
+            <a class="nav-link" routerLink="/donors" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Donors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/add_donor" >Enroll as Donor</a>
+            <a class="nav-link" routerLink="/add_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Enroll as Donor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/edit_donor" >Edit Information</a>
+            <a class="nav-link" routerLink="/edit_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Edit Information</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/admin_donors">Donors</a>
+            <a class="nav-link" routerLink="/admin_donors" *ngIf='auth.loggedIn() && auth.loggedInAdmin()'>Donors</a>
           </li>
         </ul>
         <ul class='navbar-nav'> 
-            <a class='nav-link nav-item' routerLink="/admin_login" >Admin Login</a>
-            <a class='nav-link nav-item' routerLink="/user_login" >User Login</a>
-            <a class='nav-link nav-item' routerLink="/user_signup" >User Signup</a>
-            <a class='nav-link nav-item' routerLink="/">Logout</a>
-            <a class='nav-link nav-item' routerLink="/">Logout</a>
+            <a class='nav-link nav-item' routerLink="/admin_login" *ngIf='!auth.loggedIn()'>Admin Login</a>
+            <a class='nav-link nav-item' routerLink="/user_login" *ngIf='!auth.loggedIn()'>User Login</a>
+            <a class='nav-link nav-item' routerLink="/user_signup" *ngIf='!auth.loggedIn()'>User Signup</a>
+            <a class='nav-link nav-item' routerLink="/" *ngIf='auth.loggedIn() && auth.loggedInAdmin()' (click)='logoutAdmin()'>Logout</a>
+            <a class='nav-link nav-item' routerLink="/" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()' (click)='logoutUser()'>Logout</a>
         </ul>
       </div>
     </div>
