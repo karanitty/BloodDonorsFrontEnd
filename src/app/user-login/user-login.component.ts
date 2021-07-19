@@ -34,7 +34,8 @@ export class UserLoginComponent implements OnInit {
     this.auth.userLogin(this.user.value)
     .subscribe(
       res=>{
-        localStorage.setItem('user','local_user');
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('user',res.access);
         console.log('Success');
         this.router.navigate(['/donors']);
       },

@@ -4,6 +4,7 @@ import { AddDonorComponent } from './add-donor/add-donor.component';
 import { AdminDonorComponent } from './admin-donor/admin-donor.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { AuthGuard } from './auth.guard';
 import { EditDonorComponent } from './edit-donor/edit-donor.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserDonorComponent } from './user-donor/user-donor.component';
@@ -29,22 +30,27 @@ const routes: Routes = [
   },
   {
     path:'add_donor',
+    canActivate:[AuthGuard],
     component:AddDonorComponent
   },
   {
     path:'edit_donor',
+    canActivate:[AuthGuard],
     component:EditDonorComponent
   },
   {
     path:'donors',
+    canActivate:[AuthGuard],
     component:UserDonorComponent
   },
   {
     path:'admin_donors',
+    canActivate:[AuthGuard],
     component:AdminDonorComponent
   },
   {
     path:'admin_home',
+    canActivate:[AuthGuard],
     component:AdminHomeComponent
   }
 ];

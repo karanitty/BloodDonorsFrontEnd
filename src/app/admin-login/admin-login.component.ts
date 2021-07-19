@@ -34,7 +34,8 @@ export class AdminLoginComponent implements OnInit {
     this.auth.adminLogin(this.admin.value)
     .subscribe(
       res=>{
-        localStorage.setItem('user','admin');
+        localStorage.setItem('token',res.token);
+        localStorage.setItem('user',res.access);
         console.log('Success');
         this.router.navigate(['/admin_home']);
       },

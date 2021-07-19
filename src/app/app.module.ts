@@ -15,8 +15,9 @@ import { EditDonorComponent } from './edit-donor/edit-donor.component';
 import { UserDonorComponent } from './user-donor/user-donor.component';
 import { AdminDonorComponent } from './admin-donor/admin-donor.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth.service'
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,12 @@ import { AuthService } from './auth.service'
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokenInterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
