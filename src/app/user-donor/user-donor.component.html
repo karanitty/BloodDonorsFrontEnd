@@ -20,14 +20,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <!-- <td>1</td>
-                            <td>Karan</td>
-                            <td>karan@gmail.com</td>
-                            <td>Address</td>
-                            <td>Kottayam</td>
-                            <td>O+ve</td>
-                            <td>123456</td> -->
+                        <tr *ngFor='let i of donor,let j=index'>
+                            <td>{{j+1}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.address}}</td>
+                            <td>{{i.district}}</td>
+                            <td>{{i.blood}}</td>
+                            <td>{{i.phone}}</td>
                         </tr>
                     </tbody>
                 </table>

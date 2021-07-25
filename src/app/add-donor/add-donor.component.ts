@@ -29,7 +29,10 @@ export class AddDonorComponent implements OnInit {
   }
 
   addDonor(){
-
+    console.log(this.newDonor);
+    this.detailsService.addDonor(this.newDonor);
+    alert('Your request has been sent to the Admin');
+    this.router.navigate(['/donors']);
   }
 
 }
