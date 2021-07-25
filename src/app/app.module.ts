@@ -18,6 +18,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth.service'
 import { TokenInterceptorService } from './token-interceptor.service';
+import { DetailsService } from './details.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService,
+  providers: [AuthService, DetailsService,
   {
     provide:HTTP_INTERCEPTORS,
     useClass:TokenInterceptorService,
