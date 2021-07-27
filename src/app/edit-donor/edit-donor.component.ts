@@ -35,4 +35,11 @@ export class EditDonorComponent implements OnInit {
     this.router.navigate(['/donors']);
   }
 
+  deleteDonor(){
+    console.log(this.donor.email);
+    this.detailsService.deleteDonor(this.donor.email);
+    alert('Donor data has been deleted');
+    this.router.navigate(['/donors']);
+  }
+
 }
