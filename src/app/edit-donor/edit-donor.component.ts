@@ -38,6 +38,7 @@ export class EditDonorComponent implements OnInit {
   deleteDonor(){
     console.log(this.donor.email);
     this.detailsService.deleteDonor(this.donor.email);
+    localStorage.setItem('donor','no');
     alert('Donor data has been deleted');
     this.router.navigate(['/donors']);
   }

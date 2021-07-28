@@ -39,4 +39,13 @@ export class AuthService {
       return false;
     }
   }
+
+  isDonor(){
+    if(localStorage.getItem('donor')=='yes'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

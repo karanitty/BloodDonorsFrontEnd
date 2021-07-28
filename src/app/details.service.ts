@@ -38,30 +38,4 @@ export class DetailsService {
     return this.http.delete('http://localhost:3000/user/delete_donor/'+email)
     .subscribe(data=>{console.log(data)});
   }
-
-  notDonor(){
-    var email = localStorage.getItem('user');
-    this.http.get('http://localhost:3000/user/not_donor'+email)
-    .subscribe(data=>{
-      if(data){
-        return true;
-      }
-      else{
-        return false;
-      }
-    })
-  }
-
-  isDonor(){
-    var email = localStorage.getItem('user');
-    this.http.get('http://localhost:3000/user/is_donor'+email)
-    .subscribe(data=>{
-      if(data == true){
-        return true;
-      }
-      else{
-        return false;
-      }
-    });
-  }
 }

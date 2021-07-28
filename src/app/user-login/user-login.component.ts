@@ -36,6 +36,7 @@ export class UserLoginComponent implements OnInit {
       res=>{
         localStorage.setItem('token',res.token);
         localStorage.setItem('user',res.access);
+        localStorage.setItem('donor',res.donor);
         console.log('Success');
         this.router.navigate(['/donors']);
       },

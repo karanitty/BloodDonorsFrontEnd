@@ -17,10 +17,10 @@
             <a class="nav-link" routerLink="/donors" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Donors</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/add_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Enroll as Donor</a>
+            <a class="nav-link" routerLink="/add_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin() && !auth.isDonor()'>Enroll as Donor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/edit_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin()'>Edit Information</a>
+            <a class="nav-link" routerLink="/edit_donor" *ngIf='auth.loggedIn() && !auth.loggedInAdmin() && auth.isDonor()'>Edit Information</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/admin_donors" *ngIf='auth.loggedIn() && auth.loggedInAdmin()'>Donors</a>
