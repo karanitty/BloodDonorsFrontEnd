@@ -21,11 +21,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            
+                        <tr *ngFor='let i of donor,let j=index'>
+                            <td>{{j+1}}</td>
+                            <td>{{i.name}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.address}}</td>
+                            <td>{{i.district}}</td>
+                            <td>{{i.blood}}</td>
+                            <td>{{i.phone}}</td>
                             <td>
-                                <button class="btn btn-warning" style="cursor:pointer"> Edit</button>
-                                <button class="btn btn-danger" style="cursor:pointer; margin-left:1%">Delete</button>
+                                <button class="btn btn-warning" style="cursor:pointer" (click)='editDonor(i)'>Edit</button>
+                                <button class="btn btn-danger" style="cursor:pointer; margin-left:1%" (click)='deleteDonor(i)'>Delete</button>
                             </td>
                         </tr>
                     </tbody>

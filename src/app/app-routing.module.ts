@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddDonorComponent } from './add-donor/add-donor.component';
 import { AdminDonorComponent } from './admin-donor/admin-donor.component';
+import { AdminEditDonorComponent } from './admin-edit-donor/admin-edit-donor.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AuthUserGuard } from './auth-user.guard';
@@ -53,6 +54,11 @@ const routes: Routes = [
     path:'admin_home',
     canActivate:[AuthGuard],
     component:AdminHomeComponent
+  },
+  {
+    path:'admin_edit_donor',
+    canActivate:[AuthGuard],
+    component:AdminEditDonorComponent
   }
 ];
 

@@ -19,6 +19,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './auth.service'
 import { TokenInterceptorService } from './token-interceptor.service';
 import { DetailsService } from './details.service';
+import { AdminEditDonorComponent } from './admin-edit-donor/admin-edit-donor.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DetailsService } from './details.service';
     EditDonorComponent,
     UserDonorComponent,
     AdminDonorComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    AdminEditDonorComponent
   ],
   imports: [
     BrowserModule,
